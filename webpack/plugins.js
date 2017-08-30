@@ -33,7 +33,7 @@ if(dev) {
 	);
 	plugins = [
 		...plugins,
-		...MultiHtmlWebpackPlugin,
+		// ...MultiHtmlWebpackPlugin,
 		new webpack.HotModuleReplacementPlugin()
 	];
 } else {

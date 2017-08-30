@@ -1,8 +1,11 @@
 require('../css/style.scss');
+require('../html/home.html');
+require('../html/about.html');
+require('../html/contact.html');
+
 var {hi, event} = require('./messages');
 import Button from './button';
 import {multiply} from './math';
-
 
 
 

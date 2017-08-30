@@ -3,3 +3,18 @@
 
 @import "components/header";
 @import "components/footer";
+
+
+
+body {
+	font-family: $main-ff;
+	color: $white;
+	background: $black;
+}
+a {
+	color: $brand;
+	text-decoration: none;
+	&:hover {
+		color: $brand-hover;
+	}
+}

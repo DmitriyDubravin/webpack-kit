@@ -4,3 +4,6 @@ $main-ff: 'Arial', 'Helvetica', sans-serif;
 $black: #000;
 $white: #fff;
 $yellow: #f1c40f;
+
+$brand: $yellow;
+$brand-hover: lighten($brand,20%);
