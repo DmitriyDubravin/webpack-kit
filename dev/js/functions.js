@@ -1,5 +1,5 @@
 export default {
 	test() {
-		console.log('tested');
+		console.log('functions plugged In');
 	},
 };

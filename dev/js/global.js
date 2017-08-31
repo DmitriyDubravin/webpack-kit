@@ -3,11 +3,13 @@ require('../css/style.scss');
 // require('../html/about.html');
 // require('../html/contact.html');
 
+import binder from './binder';
 import func from './functions';
+import func2 from './functions2';
 
-var {hi, event} = require('./messages');
-import Button from './button';
-import {multiply} from './math';
+// var {hi, event} = require('./messages');
+// import Button from './button';
+// import {multiply} from './math';
 
 
 
@@ -17,57 +19,22 @@ if(dev) {
 	}
 }
 
+binder(
+	// element to find
+	{
+		// ex: 'elementToFind': ['correspondingFunctionName','anotherCorrespondingFunctionName']
+		'.header': ['test'],
+	},
+	// modules to plug in
+	[
+		// ex: imported moduleName
+		func,
+		func2
+	],
+	// run binder tests
+	true
+);
 
-let tests = true;
-
-let elementsToFind = [];
-let wasFound = {};
-
-let bound = {
-	// 'elementToFind': ['correspondingFunction','anotherCorrespondingFunction']
-	'.header': ['test'],
-};
-for(var key in bound) {
-	if(bound.hasOwnProperty(key)) elementsToFind.push(key);
-}
-
-function plugInScripts(module) {
-	elementsToFind.forEach(function(selector) {
-		if(wasFound[selector]) {
-			if(tests) console.log(`+ ${selector} --> ${bound[selector]}`);
-			bound[selector].forEach(script => {
-				module[script]();
-			});
-		} else {
-			if(tests) console.log(`- ${selector}`);
-		}
-	});
-}
-
-function binder(elementsToFind, modulesToPlugIn) {
-
-	// let wasFound = {};
-	elementsToFind.forEach((selector, index, arr) => {
-		const selectorType = selector.slice(0,1).toLowerCase();
-		const isFound = [...document.querySelectorAll(elementsToFind.join(','))].some(element => {
-			if(selectorType === '.') { // if class
-				return (` ${element.className} `).indexOf(` ${selector.slice(1)} `) > -1;
-			} else if(selectorType === '#') { // if id
-				return element.id.indexOf(selector.slice(1)) > -1;
-			} else if(selectorType === '[') { // if data-attribute
-				return element.hasAttribute(selector.slice(1,-1));
-			} else {
-				return (element.tagName).indexOf(selector) > -1;
-			}
-			// console.log(element); // too many elementst? learn 'some' method ???
-		});
-		wasFound[selector] = isFound;
-		if(index === arr.length - 1) {
-			plugInScripts(modulesToPlugIn); // callback
-		}
-	});
-	// return wasFound;
-}
 
 function checkFuncionSpeed(f, fArgs) {
 	let t0 = performance.now();
@@ -77,12 +44,12 @@ function checkFuncionSpeed(f, fArgs) {
 	return result;
 }
 
-// let wasFound = binder(elementsToFind);
-// let wasFound = checkFuncionSpeed(binder, elementsToFind);
-binder(elementsToFind, func);
+// // let wasFound = binder(elementsToFind);
+// // let wasFound = checkFuncionSpeed(binder, elementsToFind);
+// binder(elementsToFind, func);
 
-// isTouch
-if('ontouchstart' in window) document.body.className += ' touch';
+// // isTouch
+// if('ontouchstart' in window) document.body.className += ' touch';
 
 
 
