@@ -4,7 +4,6 @@ import binder from './binder';
 import module1 from './functions1';
 import module2 from './functions2';
 
-
 if(dev) {
 	if(module.hot) {
 		module.hot.accept();
