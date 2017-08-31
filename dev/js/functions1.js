@@ -1,5 +1,8 @@
 export default {
-	test() {
-		console.log('functions 1 plugged In');
+	func11() {
+		console.log('func11 executed');
 	},
+	func12() {
+		console.log('func12 executed');
+	}
 };

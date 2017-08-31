@@ -10,7 +10,12 @@ body {
 	font-family: $main-ff;
 	color: $white;
 	background: $black;
+	transition: opacity 0.25s;
+	&.preloader {
+		opacity: 0;
+	}
 }
+
 a {
 	color: $brand;
 	text-decoration: none;
@@ -19,7 +24,7 @@ a {
 	}
 }
 
-
 .content {
 	padding: 20px;
 }
+

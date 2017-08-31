@@ -10,11 +10,12 @@ if(dev) {
 	}
 }
 
-binder(
+let args = [
 	// elements to find
 	{
 		// ex: 'elementToFind': ['correspondingFunctionName','anotherCorrespondingFunctionName']
-		'.header': ['test'],
+		'.header': ['func11','func12'],
+		'.parent': ['func21','func22'],
 	},
 	// modules to plug in
 	[
@@ -23,29 +24,27 @@ binder(
 		module2
 	],
 	// run binder tests
-	true
-);
+	false
+];
+
+if('ontouchstart' in window) document.body.className += ' touch';
+
+binder(...args);
+
+
+
+
 
 // var {hi, event} = require('./messages');
 // import Button from './button';
 // import {multiply} from './math';
 
-
-// function checkFuncionSpeed(f, fArgs) {
-// 	let t0 = performance.now();
-// 	let result = f(fArgs);
-// 	let t1 = performance.now();
-// 	console.log("Elements were found in " + (t1 - t0) + " milliseconds.");
-// 	return result;
-// }
-
-// // let wasFound = binder(elementsToFind);
-// // let wasFound = checkFuncionSpeed(binder, elementsToFind);
-// binder(elementsToFind, func);
-
 // // isTouch
-// if('ontouchstart' in window) document.body.className += ' touch';
 
+
+// var {hi, event} = require('./messages');
+// import Button from './button';
+// import {multiply} from './math';
 
 
 

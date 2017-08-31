@@ -32,7 +32,10 @@
 body {
   font-family: "Arial", "Helvetica", sans-serif;
   color: #fff;
-  background: #000; }
+  background: #000;
+  transition: opacity 0.25s; }
+  body.preloader {
+    opacity: 0; }
 
 a {
   color: #f1c40f;

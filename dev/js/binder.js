@@ -1,4 +1,7 @@
 export default function binder(elementsAndFunctionsBounds, modulesToPlugIn, testsToExecute = false) {
+	if(testsToExecute) {
+		let t0 = performance.now();
+	}
 
 	// create list of elements to find
 	let elementsToFind = [];
@@ -10,7 +13,7 @@ export default function binder(elementsAndFunctionsBounds, modulesToPlugIn, test
 
 	// create a notions object list of found elements
 	let wasFound = {};
-	elementsToFind.forEach((selector, index, arr) => {
+	elementsToFind.forEach((selector, index, array) => {
 		const selectorType = selector.slice(0,1).toLowerCase();
 		const isFound = [...document.querySelectorAll(elementsToFind.join(','))].some(element => {
 			if(selectorType === '.') { // if class
@@ -25,7 +28,7 @@ export default function binder(elementsAndFunctionsBounds, modulesToPlugIn, test
 			// console.log(element); // too many elements? learn 'some' method ???
 		});
 		wasFound[selector] = isFound;
-		if(index === arr.length - 1) {
+		if(index === array.length - 1) {
 			plugInScripts(modulesToPlugIn); // callback
 		}
 	});
@@ -33,17 +36,45 @@ export default function binder(elementsAndFunctionsBounds, modulesToPlugIn, test
 	// return wasFound;
 
 	function plugInScripts(modules) {
-		elementsToFind.forEach(function(selector) {
+		elementsToFind.forEach(function(selector, index, array) {
 			if(wasFound[selector]) {
 				if(testsToExecute) console.log(`+ ${selector} --> ${elementsAndFunctionsBounds[selector]}`);
 				elementsAndFunctionsBounds[selector].forEach(script => {
-					modules.forEach(module => {
-						module[script]();
+					let corruptedScriptName = 0;
+
+					// need to remember scriptnames to not execute them several times
+
+					modules.forEach((module, i, arr) => {
+						if(module.hasOwnProperty([script])) {
+							module[script]();
+							corruptedScriptName = 1;
+						}
+						if(i === arr.length - 1) {
+							if(corruptedScriptName === 0) {
+								console.log(`! script: ${script} wasn't found`);
+							}
+						}
 					});
 				});
 			} else {
 				if(testsToExecute) console.log(`- ${selector}`);
 			}
+			if(index === array.length - 1) {
+				turnOffPreloader('preloader', 500); // callback
+			}
 		});
+	}
+
+// coockies
+
+	function turnOffPreloader(preloaderClass, speed = 0) {
+		setTimeout(() => {
+			document.body.className = document.body.className.split(' ').filter(cls => cls !== preloaderClass).join(' ');
+		}, speed);
+	}
+
+	if(testsToExecute) {
+		let t1 = performance.now();
+		console.log("Elements were found in " + (t1 - t0) + " milliseconds.");
 	}
 }
