@@ -1,7 +1,7 @@
 module.exports = function() {
 	return `
 		<footer class="footer">
-			Footer
+			&copy; 2017. All Rights Reserved.
 		</footer>
 	`;
 };

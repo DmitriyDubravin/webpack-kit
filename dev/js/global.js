@@ -1,16 +1,8 @@
 require('../css/style.scss');
-// require('../html/home.html');
-// require('../html/about.html');
-// require('../html/contact.html');
 
 import binder from './binder';
-import func from './functions';
-import func2 from './functions2';
-
-// var {hi, event} = require('./messages');
-// import Button from './button';
-// import {multiply} from './math';
-
+import module1 from './functions1';
+import module2 from './functions2';
 
 
 if(dev) {
@@ -20,7 +12,7 @@ if(dev) {
 }
 
 binder(
-	// element to find
+	// elements to find
 	{
 		// ex: 'elementToFind': ['correspondingFunctionName','anotherCorrespondingFunctionName']
 		'.header': ['test'],
@@ -28,21 +20,25 @@ binder(
 	// modules to plug in
 	[
 		// ex: imported moduleName
-		func,
-		func2
+		module1,
+		module2
 	],
 	// run binder tests
 	true
 );
 
+// var {hi, event} = require('./messages');
+// import Button from './button';
+// import {multiply} from './math';
 
-function checkFuncionSpeed(f, fArgs) {
-	let t0 = performance.now();
-	let result = f(fArgs);
-	let t1 = performance.now();
-	console.log("Elements were found in " + (t1 - t0) + " milliseconds.");
-	return result;
-}
+
+// function checkFuncionSpeed(f, fArgs) {
+// 	let t0 = performance.now();
+// 	let result = f(fArgs);
+// 	let t1 = performance.now();
+// 	console.log("Elements were found in " + (t1 - t0) + " milliseconds.");
+// 	return result;
+// }
 
 // // let wasFound = binder(elementsToFind);
 // // let wasFound = checkFuncionSpeed(binder, elementsToFind);
@@ -50,16 +46,6 @@ function checkFuncionSpeed(f, fArgs) {
 
 // // isTouch
 // if('ontouchstart' in window) document.body.className += ' touch';
-
-
-
-
-
-
-
-
-
-
 
 
 

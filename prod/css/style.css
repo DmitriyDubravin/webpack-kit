@@ -1,3 +1,34 @@
+.main-nav {
+  margin: 0;
+  padding: 0; }
+  .main-nav li {
+    list-style: none; }
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: 20px; }
+
+.main-logo {
+  margin: 0 20px 0 0;
+  max-width: 40px; }
+  .main-logo img {
+    max-width: 100%;
+    height: auto; }
+
+.main-nav {
+  display: flex;
+  line-height: 20px;
+  font-size: 18px; }
+  .main-nav li {
+    margin: 0 20px 0 0; }
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: 20px; }
+
 body {
   font-family: "Arial", "Helvetica", sans-serif;
   color: #fff;
@@ -8,6 +39,9 @@ a {
   text-decoration: none; }
   a:hover {
     color: #f7dc6f; }
+
+.content {
+  padding: 20px; }
 
 /*# sourceMappingURL=../js/bundle.js.map*/
 /*# sourceMappingURL=style.css.map*/

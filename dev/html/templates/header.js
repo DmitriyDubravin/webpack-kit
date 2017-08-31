@@ -1,8 +1,11 @@
-module.exports = function() {
+module.exports = function(siteName) {
 	return `
 		<header class="header">
-			<div>Header</div>
-			<strong class="main-logo"><a href="home.html">Logo</a></strong>
+			<strong class="main-logo">
+				<a href="home.html">
+					<img src="../images/webpack-logo.png" alt="${siteName}" />
+				</a>
+			</strong>
 			<nav>
 				<ul class="main-nav">
 					<li><a href="home.html">Home</a></li>
