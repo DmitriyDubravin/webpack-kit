@@ -1,8 +1,8 @@
 export default {
-	func21() {
-		console.log('func21 executed');
+	aboutFunction() {
+		console.log('about function executed');
 	},
-	func22() {
-		console.log('func22 executed');
+	contactFunction() {
+		console.log('contact executed');
 	}
 };

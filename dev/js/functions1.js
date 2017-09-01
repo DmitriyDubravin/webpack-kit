@@ -1,8 +1,8 @@
 export default {
-	func11() {
-		console.log('func11 executed');
+	navFunction() {
+		console.log('nav function executed');
 	},
-	func12() {
-		console.log('func12 executed');
+	searchFunction() {
+		console.log('search function executed');
 	}
 };

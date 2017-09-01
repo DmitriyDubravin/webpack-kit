@@ -11,19 +11,20 @@ if(dev) {
 }
 
 let args = [
-	// elements to find
+// elements to find & functions to execute
 	{
 		// ex: 'elementToFind': ['correspondingFunctionName','anotherCorrespondingFunctionName']
-		'.header': ['func11','func12'],
-		'.parent': ['func21','func22'],
+		'.header': ['navFunction', 'searchFunction', 'sss'],
+		'.about': ['aboutFunction'],
+		'.contact': ['contactFunction'],
 	},
-	// modules to plug in
+// modules to plug in
 	[
 		// ex: imported moduleName
 		module1,
 		module2
 	],
-	// run binder tests
+// run binder tests
 	false
 ];
 

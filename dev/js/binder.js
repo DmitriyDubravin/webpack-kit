@@ -1,6 +1,7 @@
 export default function binder(elementsAndFunctionsBounds, modulesToPlugIn, testsToExecute = false) {
+	let t0, t1;
 	if(testsToExecute) {
-		let t0 = performance.now();
+		t0 = performance.now();
 	}
 
 	// create list of elements to find
@@ -36,25 +37,17 @@ export default function binder(elementsAndFunctionsBounds, modulesToPlugIn, test
 	// return wasFound;
 
 	function plugInScripts(modules) {
+		let mergedModules = Object.assign(...modules);
+
 		elementsToFind.forEach(function(selector, index, array) {
 			if(wasFound[selector]) {
 				if(testsToExecute) console.log(`+ ${selector} --> ${elementsAndFunctionsBounds[selector]}`);
-				elementsAndFunctionsBounds[selector].forEach(script => {
-					let corruptedScriptName = 0;
-
-					// need to remember scriptnames to not execute them several times
-
-					modules.forEach((module, i, arr) => {
-						if(module.hasOwnProperty([script])) {
-							module[script]();
-							corruptedScriptName = 1;
-						}
-						if(i === arr.length - 1) {
-							if(corruptedScriptName === 0) {
-								console.log(`! script: ${script} wasn't found`);
-							}
-						}
-					});
+				elementsAndFunctionsBounds[selector].forEach((script, i, arr) => {
+					if(mergedModules.hasOwnProperty([script])) {
+						mergedModules[script]();
+					} else {
+						console.log(`! ${script} script wasn't found`);
+					}
 				});
 			} else {
 				if(testsToExecute) console.log(`- ${selector}`);
@@ -65,7 +58,7 @@ export default function binder(elementsAndFunctionsBounds, modulesToPlugIn, test
 		});
 	}
 
-// coockies
+// coockies need
 
 	function turnOffPreloader(preloaderClass, speed = 0) {
 		setTimeout(() => {
@@ -74,7 +67,7 @@ export default function binder(elementsAndFunctionsBounds, modulesToPlugIn, test
 	}
 
 	if(testsToExecute) {
-		let t1 = performance.now();
+		t1 = performance.now();
 		console.log("Elements were found in " + (t1 - t0) + " milliseconds.");
 	}
 }
