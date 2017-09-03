@@ -1,7 +1,5 @@
 require('../css/style.scss');
 
-import binder from './binder';
-import tools from './tools';
 import common from './common';
 import module1 from './module1';
 import moduleN from './moduleN';
@@ -12,17 +10,32 @@ if(dev) {
 	}
 }
 
+
+// treeshaking test
+import {say, detectTouch, unusedFunction} from './helpers';
+
+
+// custom module
+let custom = {
+	isTouch: false
+};
+if(detectTouch()) {
+	document.body.className += ' touch';
+	custom.isTouch = true;
+}
+
+
 let args = [
 	// elements to find & functions to execute if element was found
 	{
 		'body': ['init', 'resize'],
-		'.header': ['navFunction', 'searchFunction', 'errorNameFunction'],
-		'.about': ['aboutFunction'],
-		'.contact': ['contactFunction'],
+		// '.header': ['navFunction', 'searchFunction', 'errorNameFunction'],
+		// '.about': ['aboutFunction'],
+		// '.contact': ['contactFunction'],
 	},
 	// modules to plug in
 	[
-		tools,
+		custom,
 		common,
 		module1,
 		moduleN
@@ -31,4 +44,5 @@ let args = [
 	// true
 ];
 
+import {binder} from './binder';
 binder(...args);

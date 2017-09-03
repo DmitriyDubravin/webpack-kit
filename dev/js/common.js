@@ -1,11 +1,13 @@
+import {detectTouch, say, delay} from './helpers';
+
 export default {
     init() {
-        this.detectTouch();
-        this.say('window was loaded');
+        say('window was loaded');
+        say(`is touch: ${this.isTouch}`);
     },
     resize() {
         window.onresize = () => {
-            this.delay(500, this.say, 'window was resized');
+            delay(500, say, 'window was resized');
         };
     }
 };

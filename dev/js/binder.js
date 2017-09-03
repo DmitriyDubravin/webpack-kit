@@ -1,4 +1,4 @@
-export default function binder(selectorsAndFunctionsBounds, modulesToPlugIn, runTests = false) {
+export const binder = (selectorsAndFunctionsBounds, modulesToPlugIn, runTests = false) => {
 	const selectorsToFind = Object.keys(selectorsAndFunctionsBounds);
 	const foundElementsList = [...document.querySelectorAll(selectorsToFind.join(','))];
 	const mergedModules = Object.assign(...modulesToPlugIn);
@@ -24,4 +24,4 @@ export default function binder(selectorsAndFunctionsBounds, modulesToPlugIn, run
 			if(runTests) console.log(`- ${selector}`);
 		}
 	});
-}
+};
