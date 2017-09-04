@@ -49,7 +49,7 @@ if(dev) {
 		...MultiHtmlWebpackPlugin,
 		extractPlugin,
 		new webpack.SourceMapDevToolPlugin({
-			filename: './js/bundle.js.map',
+			filename: './js/main.js.map',
 		}),
 		new webpack.optimize.UglifyJsPlugin(),
 		new CleanWebpackPlugin(['prod'], {
@@ -59,8 +59,7 @@ if(dev) {
 			from: 'images/**/*',
 			to: path.resolve(__dirname, '../prod')
 		}])
-		// ,
-		// new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i })
+		// , new ImageminPlugin({test: /\.(jpe?g|png|gif|svg)$/i})
 	];
 };
 
