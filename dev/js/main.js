@@ -1,6 +1,8 @@
 require('../css/main.scss');
 
-import {binder} from './binder';
+import slick from 'slick-carousel';
+
+import binder from './binder';
 import common from './common';
 import module1 from './module1';
 import moduleN from './moduleN';
