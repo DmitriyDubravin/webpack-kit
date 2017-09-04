@@ -1,5 +1,5 @@
 const {dev} = require('./common');
 
 module.exports = dev
-? './dev/js/global.js'
-: './js/global.js';
+? './dev/js/main.js'
+: './js/main.js';

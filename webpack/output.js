@@ -4,9 +4,9 @@ const path = require('path');
 module.exports = dev
 ? {
 	publicPath: '/',
-	filename: 'bundle.js'
+	filename: 'main.js'
 }
 : {
 	path: path.resolve(__dirname, '../prod'),
-	filename: 'js/bundle.js'
+	filename: 'js/main.js'
 };

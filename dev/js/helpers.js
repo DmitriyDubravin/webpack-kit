@@ -8,8 +8,6 @@ export const delay = (delay, func, args) => {
     }, delay);
 };
 
-export const detectTouch = () => 'ontouchstart' in window;
-
 export const unusedFunction = () => {
     console.log('I have no use');
 };

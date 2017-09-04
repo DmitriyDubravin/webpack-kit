@@ -1,8 +1,7 @@
+import {say, delay} from './helpers';
+
 export default {
 	navFunction() {
-		this.say('navFunction executed');
-	},
-	searchFunction() {
-		this.say('searchFunction executed');
+		say('navFunction executed');
 	},
 };

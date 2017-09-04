@@ -1,8 +1,10 @@
+import {say, delay} from './helpers';
+
 export default {
 	aboutFunction() {
-		this.say('aboutFunction executed');
+		say('aboutFunction executed');
 	},
 	contactFunction() {
-		this.say('contactFunction executed');
+		say('contactFunction executed');
 	},
 };
