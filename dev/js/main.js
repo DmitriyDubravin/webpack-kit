@@ -1,6 +1,6 @@
 require('../css/main.scss');
 
-import slick from 'slick-carousel';
+// import slick from 'slick-carousel';
 
 import binder from './binder';
 import common from './common';
@@ -22,6 +22,7 @@ let args = [
 		'body': ['init', 'resize'],
 		'.header': ['navFunction', 'errorNameFunction'],
 		'#about': ['aboutFunction'],
+		//'.gallery': ['galleryFunction'],
 		'[data-contact]': ['contactFunction'],
 	},
 	// modules to plug in
@@ -31,7 +32,7 @@ let args = [
 		moduleN
 	],
 	// run binder tests
-	true
+	// true
 ];
 
 binder(...args);

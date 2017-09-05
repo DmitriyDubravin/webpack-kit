@@ -1,5 +1,6 @@
 const {dev} = require('./common');
 
 module.exports = dev
-? 'source-map'
-: 'hidden-source-map';
+? 'cheap-module-eval-source-map'
+//: 'source-map';
+: '';

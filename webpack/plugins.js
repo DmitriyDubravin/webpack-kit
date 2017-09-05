@@ -48,9 +48,9 @@ if(dev) {
 		...plugins,
 		...MultiHtmlWebpackPlugin,
 		extractPlugin,
-		new webpack.SourceMapDevToolPlugin({
-			filename: './js/main.js.map',
-		}),
+//		new webpack.SourceMapDevToolPlugin({
+//			filename: './js/main.js.map',
+//		}),
 		new webpack.optimize.UglifyJsPlugin(),
 		new CleanWebpackPlugin(['prod'], {
 			root: path.resolve(__dirname, "../"),
