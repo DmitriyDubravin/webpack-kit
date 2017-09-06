@@ -15,7 +15,7 @@ module.exports = dev
 				options: {
 					url: false, // ?
 					sourceMap: true, // ! expose a runtime overhead and increase in bundle size
-					minimize: true // ! In some cases the minification is destructive to the css; ! relative paths are buggy
+					minimize: true // ! In some cases the minification is destructive to the css; ! relative paths could be buggy
 				}
 			},
 			// 'postcss-loader'
@@ -32,7 +32,19 @@ module.exports = dev
 	{
 		test: /\.scss$/,
 		use: extractPlugin.extract({
-			use: ['css-loader', 'sass-loader']
+			use: [
+				{
+					loader: 'css-loader',
+					options: {
+						sourceMap: true,
+						minimize: true
+						
+					}
+				},
+				{
+					loader: 'sass-loader'
+				}
+			]
 		})
 	}
 ];
