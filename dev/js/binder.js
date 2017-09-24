@@ -2,7 +2,7 @@ export default function binder(selectorsAndFunctionsBounds, modulesToPlugIn, run
 	const selectorsToFind = Object.keys(selectorsAndFunctionsBounds);
 	const foundElementsList = [...document.querySelectorAll(selectorsToFind.join(','))];
 	const mergedModules = Object.assign(...modulesToPlugIn);
-	selectorsToFind.forEach((selector, index, array) => {
+	selectorsToFind.forEach(selector => {
 		const selectorType = selector.slice(0,1).toLowerCase();
 		if(foundElementsList.some(element => {
 			switch(selectorType) {
@@ -13,7 +13,7 @@ export default function binder(selectorsAndFunctionsBounds, modulesToPlugIn, run
 			}})
 		) {
 			if(runTests) console.log(`+ ${selector} --> ${selectorsAndFunctionsBounds[selector].join(', ')}`);
-			selectorsAndFunctionsBounds[selector].forEach((script, i, arr) => {
+			selectorsAndFunctionsBounds[selector].forEach(script => {
 				if(mergedModules.hasOwnProperty([script])) {
 					mergedModules[script]();
 				} else {

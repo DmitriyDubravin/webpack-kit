@@ -1,4 +1,17 @@
-module.exports = function(siteName) {
+module.exports = function(args) {
+	let siteName = args[0];
+	let activeItem = args[1];
+
+	function createNavList(arr) {
+		return arr.map(item => {
+			if(activeItem === item) {
+				return `<li class="active"><a href="${item.toLowerCase()}.html">${item}</a></li>`;
+			} else {
+				return `<li><a href="${item.toLowerCase()}.html">${item}</a></li>`;
+			}
+		}).join('\n');
+	}
+
 	return `
 		<header class="header">
 			<strong class="main-logo">
@@ -8,9 +21,7 @@ module.exports = function(siteName) {
 			</strong>
 			<nav>
 				<ul class="main-nav">
-					<li><a href="home.html">Home</a></li>
-					<li><a href="about.html">About</a></li>
-					<li><a href="contact.html">Contact</a></li>
+					${createNavList(['Home','About','Contact'])}
 				</ul>
 			</nav>
 		</header>
