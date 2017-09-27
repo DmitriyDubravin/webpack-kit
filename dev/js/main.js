@@ -7,11 +7,6 @@ import common from './common';
 import module1 from './module1';
 import moduleN from './moduleN';
 
-if(dev) {
-	if(module.hot) {
-		module.hot.accept();
-	}
-}
 
 // treeshaking test
 import {unusedFunction} from './helpers';
@@ -22,6 +17,7 @@ let args = [
 		'body': ['init', 'resize'],
 		'.header': ['navFunction', 'errorNameFunction'],
 		'#about': ['aboutFunction'],
+		'#text-block': ['fillTextBlock'],
 		'.gallery': ['galleryFunction'],
 		'[data-contact]': ['contactFunction'],
 	},
@@ -35,4 +31,17 @@ let args = [
 	// true
 ];
 
-binder(...args);
+if(dev) {
+	if(module.hot) {
+		module.hot.accept(err => {
+			if(err) {
+				// console.error('Cannot apply hot update', err);
+			}
+		});
+	}
+}
+
+// window.onload = function() {
+	binder(...args);
+// };
+

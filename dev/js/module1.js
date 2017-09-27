@@ -2,7 +2,7 @@ import {say, delay} from './helpers';
 
 export default {
 	navFunction() {
-		console.log('navFunction executed');
+		console.log('navFunction execute');
 	},
 	galleryFunction() {
 		console.log('galleryFenction executed');
@@ -11,5 +11,8 @@ export default {
 			slidesToShow: 3,
 			slidesToScroll: 3
 		});
+	},
+	fillTextBlock() {
+		$('#text-block').html('dynamic text2');
 	}
 };
