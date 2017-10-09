@@ -27,8 +27,8 @@ let args = [
 		module1,
 		moduleN
 	],
-	// run binder tests
-	// true
+	// run tests
+	true
 ];
 
 if(dev) {
@@ -41,7 +41,4 @@ if(dev) {
 	}
 }
 
-// window.onload = function() {
-	binder(...args);
-// };
-
+binder(...args);

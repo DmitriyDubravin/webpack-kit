@@ -51,6 +51,13 @@
 				top: 30px;
 				left: 30px;
 			}
+			#pages-counter {
+				position: fixed;
+				right: 0;
+				bottom: 0;
+				padding: 20px;
+				color: #fff;
+			}
 		</style>
 	</head>
 	<body>
@@ -60,6 +67,7 @@
 					<img src="http://bigdropinc.com/wp-content/themes/bd/images/bigdrop-white.svg" alt="Bigdropinc.com" />
 				</a>
 				<ul id="project-pages-menu"></ul>
+				<div id="pages-counter">Pages: <span></span></div>
 			</div>
 		</div>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -67,6 +75,7 @@
 			$(function () {
 				$.ajax('pages.json').done(function(data) {
 					var pathFolder = data[0];
+					$('#pages-counter span').append(data.length - 1);
 					$.each(data, function(index, name) {
 						if(index !== 0) {
 							var page = $('<li><a href="' + pathFolder + '/html/' + name + '.html">' + name.replace(/[-]|[_]/g, ' ') + '</a></li>');
