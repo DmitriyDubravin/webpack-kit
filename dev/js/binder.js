@@ -1,7 +1,26 @@
 export default function binder(selectorsAndFunctionsBounds, modulesToPlugIn, runTests = false) {
 	const selectorsToFind = Object.keys(selectorsAndFunctionsBounds);
 	const foundElementsList = [...document.querySelectorAll(selectorsToFind.join(','))];
-	const mergedModules = Object.assign(...modulesToPlugIn);
+	let mergedModules = {};
+	if(runTests) {
+		let uniqueProps = [];
+		console.log('AAAAA', uniqueProps);
+		modulesToPlugIn.forEach((module, i, arr) => {
+			for(let prop in module) {
+				if(module.hasOwnProperty(prop)) {
+					if(uniqueProps.indexOf(prop) === -1) {
+						uniqueProps.push(prop);
+					} else {
+						console.log(`! doubled property was found: ${prop}`);
+					}
+				}
+			}
+			if(i == arr.length - 1) {
+				uniqueProps = [];
+			}
+		});
+	}
+	mergedModules = Object.assign(...modulesToPlugIn);
 	selectorsToFind.forEach(selector => {
 		const selectorType = selector.slice(0,1).toLowerCase();
 		if(foundElementsList.some(element => {

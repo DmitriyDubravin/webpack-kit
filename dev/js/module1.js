@@ -13,6 +13,6 @@ export default {
 		});
 	},
 	fillTextBlock() {
-		$('#text-block').html('dynamic text2');
+		$('#text-block').html('dynamic text3');
 	}
 };
