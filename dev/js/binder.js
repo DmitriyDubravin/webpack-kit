@@ -4,7 +4,6 @@ export default function binder(selectorsAndFunctionsBounds, modulesToPlugIn, run
 	let mergedModules = {};
 	if(runTests) {
 		let uniqueProps = [];
-		console.log('AAAAA', uniqueProps);
 		modulesToPlugIn.forEach((module, i, arr) => {
 			for(let prop in module) {
 				if(module.hasOwnProperty(prop)) {
