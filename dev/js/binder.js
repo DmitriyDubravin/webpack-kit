@@ -1,4 +1,5 @@
 export default function binder(selectorsAndFunctionsBounds, modulesToPlugIn, runTests = false) {
+	if(runTests) var t0 = performance.now();
 	const selectorsToFind = Object.keys(selectorsAndFunctionsBounds);
 	const foundElementsList = [...document.querySelectorAll(selectorsToFind.join(','))];
 	let mergedModules = {};
@@ -42,4 +43,6 @@ export default function binder(selectorsAndFunctionsBounds, modulesToPlugIn, run
 			if(runTests) console.log(`- ${selector}`);
 		}
 	});
+	if(runTests) var t1 = performance.now();
+	if(runTests) console.log("Binder html parsing took " + (t1 - t0) + " milliseconds.");
 }
