@@ -6,5 +6,8 @@ export default {
 	},
 	fillTextBlock() {
 		$('#text-block').html('dynamic text3');
+	},
+	carousel() {
+		$('.carousel').slick();
 	}
 };

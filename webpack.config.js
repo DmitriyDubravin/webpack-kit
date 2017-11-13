@@ -1,5 +1,5 @@
 var config = {module: {rules: []}};
-const options = ['entry', 'context', 'plugins', 'devServer', 'output', 'devtool'];
+const options = ['entry', 'context', 'plugins', 'devServer', 'output', 'devtool', 'externals'];
 const moduleRules = ['images', 'fonts', 'scss', 'js'];
 options.forEach(option => {
 	let importedModules = require(`./webpack/${option}`);

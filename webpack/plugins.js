@@ -13,12 +13,13 @@ var plugins = [
 	new webpack.DefinePlugin({
 		dev: JSON.stringify(dev),
 		prod: JSON.stringify(prod)
-	}),
-	new webpack.ProvidePlugin({
-		$: "jquery",
-		jQuery: "jquery",
-		"window.jQuery": "jquery"
 	})
+	// ,
+	// new webpack.ProvidePlugin({
+	// 	$: "jquery",
+	// 	jQuery: "jquery",
+	// 	"window.jQuery": "jquery"
+	// })
 ];
 if(dev) {
 	var MultiHtmlWebpackPlugin = pages.map(name => 
