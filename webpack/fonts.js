@@ -1,20 +1,30 @@
-const {dev} = require('./common');
+const {dev} = require("./common");
 
 module.exports = dev
-? null
-: [
-	{
-		test: /\.(otf|ttf|woff|eot|svg)$/,
-        exclude: /images/,
-		use: [
-			{
-				loader: 'file-loader',
-				options: {
-					name: '[name].[ext]',
-					publicPath: '..',
-					outputPath: '/fonts/',
-				}
-			}
-		]
-	}
-];
+    ? [
+        {
+            test: /\.(ttf|otf|eot|woff|svg)$/,
+            exclude: /images/,
+            use: [
+                {
+                    loader: "file-loader"
+                }
+            ]
+        }
+    ]
+    : [
+        {
+            test: /\.(ttf|otf|eot|woff|svg)$/,
+            exclude: /images/,
+            use: [
+                {
+                    loader: "file-loader",
+                    options: {
+                        name: "[name].[ext]",
+                        publicPath: "../",
+                        outputPath: "fonts/"
+                    }
+                }
+            ]
+        }
+    ];

@@ -1,9 +1,9 @@
-const {dev} = require('./common');
+const {dev} = require("./common");
 
 module.exports = dev
-? {
-	jquery: 'jQuery'
-}
-: {
-	jquery: 'jQuery'
-};
+    ? {
+        jquery: "jQuery"
+    }
+    : {
+        jquery: "jQuery"
+    };

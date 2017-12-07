@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+	${require('./html/templates/head')('Webpack Kit')}
+	<body>
+		<div class="page">
+			${require('./html/templates/header')(['Webpack Kit','About'])}
+			<div class="content" id="about">
+				<h1>About page</h1>
+			</div>
+			${require('./html/templates/footer')()}
+		</div>
+		${require('./html/templates/scripts')()}
+	</body>
+</html>

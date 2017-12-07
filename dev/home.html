@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-	${require('./templates/head')('Webpack Kit')}
+	${require('./html/templates/head')('Webpack Kit')}
 	<body>
 		<div class="page">
-			${require('./templates/header')(['Webpack Kit','Home'])}
+			${require('./html/templates/header')(['Webpack Kit','Home'])}
 			<div class="content">
 				<h1>Home page</h1>
 			</div>
@@ -15,8 +15,8 @@
 				<div>slide 4</div>
 				<div>slide 5</div>
 			</div>
-			${require('./templates/footer')()}
+			${require('./html/templates/footer')()}
 		</div>
-		${require('./templates/scripts')()}
+		${require('./html/templates/scripts')()}
 	</body>
 </html>

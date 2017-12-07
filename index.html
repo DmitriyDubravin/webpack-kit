@@ -78,7 +78,7 @@
 					$('#pages-counter span').append(data.length - 1);
 					$.each(data, function(index, name) {
 						if(index !== 0) {
-							var page = $('<li><a href="' + pathFolder + '/html/' + name + '.html">' + name.replace(/[-]|[_]/g, ' ') + '</a></li>');
+							var page = $('<li><a href="' + pathFolder + '/' + name + '.html">' + name.replace(/[-]|[_]/g, ' ') + '</a></li>');
 							$('#project-pages-menu').append(page);
 						}
 					})

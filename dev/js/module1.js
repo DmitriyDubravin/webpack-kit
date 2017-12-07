@@ -1,13 +1,13 @@
-import {say, delay} from './helpers';
+import {say, delay} from "./helpers";
 
 export default {
-	navFunction() {
-		console.log('navFunction execute');
-	},
-	fillTextBlock() {
-		$('#text-block').html('dynamic text3');
-	},
-	carousel() {
-		$('.carousel').slick();
-	}
+    navFunction() {
+        console.log("navFunction execute");
+    },
+    fillTextBlock() {
+        $("#text-block").html("dynamic text3");
+    },
+    carousel() {
+        $(".carousel").slick();
+    }
 };

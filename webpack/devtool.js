@@ -1,5 +1,5 @@
-const {dev} = require('./common');
+const {dev} = require("./common");
 
 module.exports = dev
-? 'inline-source-map'
-: '';
+    ? "inline-source-map"
+    : "";
