@@ -1,5 +1,6 @@
 import {say, delay} from "./helpers";
 
+
 export function navFunction() {
     console.log("navFunction execute");
 }

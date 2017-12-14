@@ -1,6 +1,7 @@
 require("../css/main.scss");
 
 import binder from "./binder";
+import constants from "./constants";
 import * as common from "./common";
 import * as module1 from "./module1";
 import * as moduleN from "./moduleN";
@@ -13,18 +14,17 @@ import "slick-carousel";
 import {unusedFunction} from "./helpers";
 
 let args = [
-    // elements to find & functions to execute if element was found
     {
+        "html": constants,
         "body": [common.init, common.resize, common.detectTouch],
-        // ".header": [module1.navFunction, "errorNameFunction"],
-        // ".header": module1,
+        ".header": "module1",
         // "#about": [moduleN.aboutFunction],
         // "#text-block": module1.fillTextBlock,
         // "[data-contact]": [moduleN.contactFunction],
-        // ".carousel": [module1.carousel]
+        // ".carousel": [module1.carousel],
+        // ".header": [module1.navFunction, "errorNameFunction"],
     },
-    // run tests
-    // true
+    true
 ];
 
 let dev = process.env.NODE_ENV === "development";
@@ -39,4 +39,5 @@ if(dev) {
     }
 }
 
+console.clear();
 binder(...args);

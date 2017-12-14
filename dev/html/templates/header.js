@@ -13,7 +13,7 @@ module.exports = function(args) {
     }
 
     return `
-		<header class="header">
+		<header class="header" id="header">
 			<strong class="main-logo">
 				<a href="home.html">
 					<img src="images/webpack-logo.png" alt="${siteName}" />
