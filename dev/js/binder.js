@@ -1,88 +1,54 @@
 
 // v. 2.0
 
-/*
-
-todo
-    complicated selectors support
-    check for doubled properties names
-
-*/
-
 export default function binder(selectorsAndFunctionsBounds, runTests = false) {
     let t0, t1;
-    if(runTests) t0 = performance.now();
+    if (runTests) t0 = performance.now();
 
+    // polyfill for 'matches' method
+    if (!Element.prototype.matches) {
+        Element.prototype.matches = Element.prototype.msMatchesSelector;
+    }
     // gather all selectors in array
     const selectorsToFind = Object.keys(selectorsAndFunctionsBounds);
-
     // find selectors in document
-    const foundSelectors = [...document.querySelectorAll(selectorsToFind.join(","))];
-    console.log(foundSelectors);
+    const foundElements = [...document.querySelectorAll(selectorsToFind.join(","))];
 
-    for (let bound in selectorsAndFunctionsBounds) {
-        console.log(bound);
+    // filter bounds for not founded selectors
+    let filteredBounds = {};
+    for (let key in selectorsAndFunctionsBounds) {
+        if (foundElements.some(element => element.matches(key))) {
+            filteredBounds[key] = selectorsAndFunctionsBounds[key];
+        }
     }
 
     // gather all modules in one object
     let mergedModules = {};
-    for (let bound in selectorsAndFunctionsBounds) {
-
-        let module = selectorsAndFunctionsBounds[bound];
+    for (let bound in filteredBounds) {
+        let module = filteredBounds[bound];
         let nature = Object.prototype.toString.call(module);
-
-        if(nature === "[object Array]") {
+        if (nature === "[object Array]") {
             module.forEach(script => mergedModules[script.name] = script);
-        } else if(nature === "[object Object]") {
+        } else if (nature === "[object Object]") {
             mergedModules = Object.assign(...mergedModules, module);
-        } else if(nature === "[object Function]") {
+        } else if (nature === "[object Function]") {
             mergedModules[module.name] = module;
         } else {
             console.log("! unsupported format: ", module);
         }
     }
-    if(runTests) console.log("mergedModules: ", mergedModules);
+    if (runTests) console.log("resultObject: ", mergedModules);
 
-
-
-    selectorsToFind.forEach(selector => {
-        const selectorType = selector.slice(0,1).toLowerCase();
-        if(foundSelectors.some(element => {
-            switch(selectorType) {
-            case ".": return (` ${element.className} `).indexOf(` ${selector.slice(1)} `) > -1;
-            case "#": return element.id.indexOf(selector.slice(1)) > -1;
-            case "[": return element.hasAttribute(selector.slice(1,-1));
-            default:  return (element.tagName.toLowerCase()).indexOf(selector) > -1;
-            }})
-        ) {
-            //         let toExecute = selectorsAndFunctionsBounds[selector];
-            //         let nature = Object.prototype.toString.call(toExecute);
-            //         // console.log(nature);
-            //         if(nature === "[object Array]") {
-            //             if(runTests) console.log(`+ ${selector} --> ${toExecute.map(item => item.name).join(", ")}`);
-            //             toExecute.forEach(script => script());
-            //         } else if(nature === "[object Object]") {
-            //             let scripts = [];
-            //             for (var script in toExecute) {
-            //                 if (toExecute.hasOwnProperty(script)) {
-            //                     toExecute[script]();
-            //                     if(runTests) scripts.push(toExecute[script].name);
-            //                 }
-            //             }
-            //             if(runTests) console.log(`+ ${selector} --> ${scripts.join(", ")}`);
-            //         } else {
-            //             if(runTests) console.log(`+ ${selector} --> ${toExecute.name}`);
-            //             toExecute();
-            //         }
-
-        } else {
-            if(runTests) console.log(`- ${selector} : not found`);
+    // run all functions
+    for (let key in mergedModules) {
+        if (Object.prototype.toString.call(mergedModules[key]) === '[object Function]') {
+            mergedModules[key]();
         }
-    });
-    if(runTests) t1 = performance.now();
-    if(runTests) console.log("Binder html parsing took " + (t1 - t0) + " milliseconds.");
-}
+    }
 
+    if (runTests) t1 = performance.now();
+    if (runTests) console.log("Binder html parsing took " + (t1 - t0) + " milliseconds.");
+}
 
 
 

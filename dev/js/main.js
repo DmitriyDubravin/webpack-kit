@@ -18,13 +18,13 @@ let args = [
         "html": constants,
         "body": [common.init, common.resize, common.detectTouch],
         ".header": "module1",
-        // "#about": [moduleN.aboutFunction],
-        // "#text-block": module1.fillTextBlock,
-        // "[data-contact]": [moduleN.contactFunction],
-        // ".carousel": [module1.carousel],
-        // ".header": [module1.navFunction, "errorNameFunction"],
+        "#about": [moduleN.aboutFunction],
+        "#text-block": module1.fillTextBlock,
+        "[data-contact]": [moduleN.contactFunction],
+        ".carousel": [module1.carousel],
+        ".header": [module1.navFunction],
     },
-    true
+    // true
 ];
 
 let dev = process.env.NODE_ENV === "development";
