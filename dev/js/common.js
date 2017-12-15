@@ -1,21 +1,13 @@
 import {say, delay} from "./helpers";
 
 
-export function detectTouch() {
-    if("ontouchstart" in window) {
-        document.body.className += " touch";
-        this.isTouch = true;
-    }
-}
-
 export function init() {
     say("window was loaded");
-    this.detectTouch();
     say(`is touch: ${this.isTouch}`);
 }
 
 export function resize() {
-    window.onresize = () => {
+    window.addEventListener("resize", () => {
         delay(500, say, "window was resized");
-    };
+    });
 }

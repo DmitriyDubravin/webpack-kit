@@ -2,7 +2,8 @@ import {say, delay} from "./helpers";
 
 
 export function navFunction() {
-    console.log("navFunction execute");
+    say("navFunction executed");
+    this.body.css({background: "gray"});
 }
 
 export function fillTextBlock() {
@@ -10,5 +11,6 @@ export function fillTextBlock() {
 }
 
 export function carousel() {
+    say("carousel executed");
     $(".carousel").slick();
 }

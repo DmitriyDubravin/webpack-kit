@@ -2,6 +2,6 @@
 
 
 export default {
-    isTouch: false,
+    isTouch: "ontouchstart" in window ? function() {document.body.classList.add("touch"); return true;}() : false,
     body: $("body")
 };
