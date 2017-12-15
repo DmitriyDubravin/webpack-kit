@@ -43,12 +43,11 @@ binder(...args);
 
 /*
 
+- speed up
 - no strings. supported format: object, function or an array of functions
 - no modules additional plug in
-
-
-
-
-
+- separate functions in module
+- poperties in object
+- autocomplete & quick access to function in main
 
 */
