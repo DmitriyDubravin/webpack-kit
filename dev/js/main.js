@@ -4,7 +4,7 @@ import binder from "./binder";
 import constants from "./constants";
 import * as common from "./common";
 import * as module1 from "./module1";
-import {aboutFunction, contactFunction} from "./moduleN";
+import {aboutFunction, contactFunction, sss} from "./moduleN";
 
 // import $ from 'jquery';
 
@@ -12,18 +12,6 @@ import "slick-carousel";
 
 // treeshaking test
 import {unusedFunction} from "./helpers";
-
-let args = [
-    {
-        "html": constants,
-        "body": [common.init, common.resize],
-        ".header": module1.navFunction,
-        "#text-block": module1.fillTextBlock,
-        ".carousel": module1.carousel,
-        "#about": aboutFunction,
-        "[data-contact]": contactFunction
-    }
-];
 
 let dev = process.env.NODE_ENV === "development";
 
@@ -38,16 +26,12 @@ if(dev) {
 }
 
 console.clear();
-binder(...args);
-
-
-/*
-
-- speed up
-- no strings. supported format: object, function or an array of functions
-- no modules additional plug in
-- separate functions in module
-- poperties in object
-- autocomplete & quick access to function in main
-
-*/
+binder({
+    "html": constants,
+    "body": [sss, common.init, common.resize],
+    ".header": [module1.navFunction],
+    "#text-block": module1.fillTextBlock,
+    ".carousel": module1.carousel,
+    "#about": aboutFunction,
+    "[data-contact]": contactFunction
+},true);

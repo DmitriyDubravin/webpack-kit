@@ -1,5 +1,5 @@
 
-// v. 2.0
+// v.2.0
 
 export default function binder(selectorsAndFunctionsBounds, runTests = false) {
     let t0, t1;
@@ -49,7 +49,7 @@ export default function binder(selectorsAndFunctionsBounds, runTests = false) {
 
 
 
-// v. 1.0
+// v.1.0
 
 // export default function binder(selectorsAndFunctionsBounds, modulesToPlugIn, runTests = false) {
 //     let t0, t1;
