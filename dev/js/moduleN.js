@@ -9,9 +9,14 @@ export function contactFunction() {
     say("contactFunction executed");
 }
 
-export function sss() {
-    console.log(2);
-    this.ss = function() {
-        console.log(1);
+
+// this is special function
+// its purpose to store inside "binder" functions that are not executed at once, but can be executed any time later
+export function commonFunctions() {
+    this.sparedFunction = function() {
+        console.log("spareFunction: This function won't run, but can be executed by demand via this.spareFunction()");
+    };
+    this.anotherSparedFunction = function() {
+        console.log("anotherSpareFunction: This function won't run, but can be executed by demand via this.spareFunction()");
     };
 }

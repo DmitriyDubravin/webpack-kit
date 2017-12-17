@@ -4,7 +4,7 @@ import binder from "./binder";
 import constants from "./constants";
 import * as common from "./common";
 import * as module1 from "./module1";
-import {aboutFunction, contactFunction, sss} from "./moduleN";
+import {aboutFunction, contactFunction, commonFunctions} from "./moduleN";
 
 // import $ from 'jquery';
 
@@ -27,8 +27,8 @@ if(dev) {
 
 console.clear();
 binder({
-    "html": constants,
-    "body": [sss, common.init, common.resize],
+    "html": [constants, commonFunctions],
+    "body": [common.init, common.resize],
     ".header": [module1.navFunction],
     "#text-block": module1.fillTextBlock,
     ".carousel": module1.carousel,

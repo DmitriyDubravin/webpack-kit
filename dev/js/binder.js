@@ -27,7 +27,13 @@ export default function binder(selectorsAndFunctionsBounds, runTests = false) {
         let module = filteredBounds[bound];
         let nature = Object.prototype.toString.call(module);
         if (nature === "[object Array]") {
-            module.forEach(script => mergedModules[script.name] = script);
+            module.forEach(script => {
+                if (Object.prototype.toString.call(script) === "[object Function]") {
+                    mergedModules[script.name] = script;
+                } else {
+                    mergedModules = Object.assign(...mergedModules, script);
+                }
+            });
         } else if (nature === "[object Object]") {
             mergedModules = Object.assign(...mergedModules, module);
         } else if (nature === "[object Function]") {
@@ -36,7 +42,7 @@ export default function binder(selectorsAndFunctionsBounds, runTests = false) {
             console.log("! unsupported format: ", module);
         }
     }
-    if (runTests) console.log("resultObject: ", mergedModules);
+    if (runTests) console.log("binderResultObject: ", mergedModules);
     // run all functions
     for (let key in mergedModules) {
         if (Object.prototype.toString.call(mergedModules[key]) === "[object Function]") {
