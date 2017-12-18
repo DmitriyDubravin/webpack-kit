@@ -19,7 +19,7 @@ if(dev) {
     if(module.hot) {
         module.hot.accept(err => {
             if(err) {
-                // console.error('Cannot apply hot update', err);
+                // console.error("Cannot apply hot update", err);
             }
         });
     }
@@ -34,4 +34,4 @@ binder({
     ".carousel": module1.carousel,
     "#about": aboutFunction,
     "[data-contact]": contactFunction
-},true);
+});
