@@ -1,10 +1,8 @@
 require("../css/main.scss");
 
-import binder from "./binder";
-import constants from "./constants";
-import * as common from "./common";
-import * as module1 from "./module1";
-import {aboutFunction, contactFunction, commonFunctions} from "./moduleN";
+import binder from "./libs/binder";
+import constants from "./modules/constants";
+import * as module from "./modules/module";
 
 // import $ from 'jquery';
 
@@ -27,11 +25,10 @@ if(dev) {
 
 console.clear();
 binder({
-    "html": [constants, commonFunctions],
-    "body": [common.init, common.resize],
-    ".header": [module1.navFunction],
-    "#text-block": module1.fillTextBlock,
-    ".carousel": module1.carousel,
-    "#about": aboutFunction,
-    "[data-contact]": contactFunction
-});
+    "html": [constants, module.staticFunctions],
+    "body": [module.init, module.resize],
+    ".header": module.navFunction,
+    ".carousel": module.carousel,
+    "#about": module.aboutFunction,
+    "[data-contact]": module.contactFunction
+}, true);
