@@ -24,6 +24,7 @@ if(dev) {
 }
 
 console.clear();
+
 binder({
     "html": [constants, module.staticFunctions],
     "body": [module.init, module.resize],
