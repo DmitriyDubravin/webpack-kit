@@ -6,7 +6,7 @@ export function init() {
     console.log(`is touch: ${this.isTouch}`);
 }
 
-// runs at once on all pages becouse of bound with 'body' selector
+// runs at once on all pages because of bound with 'body' selector
 export function resize() {
     window.addEventListener("resize", () => {
         setTimeout(() => {
@@ -25,17 +25,17 @@ export function contactFunction() {
     console.log("contactFunction executed");
 }
 
-// this is special function. its purpose to create inside "binder" functions that are not executed at once, but can be executed any time later
-export function staticFunctions() {
-    this.sparedFunction = function() {
+// this is special object. its purpose to create inside "binder" functions that are not executed at once, but can be executed any time later
+export var staticFunctions = {
+    sparedFunction() {
         // this function won't run, but can be executed by demand via this.spareFunction()
         console.log("spareFunction executed");
-    };
-    this.anotherSparedFunction = function(arg) {
+    },
+    anotherSparedFunction(arg) {
         // This function won't run, but can be executed by demand via this.anotherSpareFunction()
         console.log(`anotherSpareFunction executed with args: ${arg}`);
-    };
-}
+    }
+};
 
 // runs on every page because of bound with .header selector
 export function navFunction() {
